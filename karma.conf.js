@@ -25,13 +25,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'], 
-    customLaunchers: {
-      ChromeHeadless: {
-          base: 'Chrome',
-          flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223', '--no-sandbox']
-        }
-    },
+    browsers: ['Chrome'], 
+    // customLaunchers: {
+    //   ChromeHeadless: {
+    //       base: 'Chrome',
+    //       flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223', '--no-sandbox']
+    //     }
+    // },
     singleRun: false,
     restartOnFileChange: true
   });
