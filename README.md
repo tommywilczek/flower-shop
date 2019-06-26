@@ -1,10 +1,6 @@
 # FlowerShop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The Flower Shop is a simple Angular web app to practice Test-Driven Development and other best practices used in modern, professional development teams.
 
 ## Best Practices
 
@@ -21,6 +17,10 @@ This project uses the following practices:
   - Run `ng test --code-coverage` for the coverage summary 
 - Cross-browser testing
   - All tests were run in Chrome, Safari, and Firefox
+
+## Up and Running
+
+In a new terminal, run `ng serve --open` for a dev server that opens a new browser to `http://localhost:4200/`.
 
 ## Testing
 
