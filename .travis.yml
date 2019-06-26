@@ -21,7 +21,7 @@ cache:
 
 script:
   - ng lint
-  - ng test -watch false -browsers ChromeHeadless
+  - ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
   - ng build --prod
 
 
