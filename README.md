@@ -24,6 +24,6 @@ In a new terminal, run `ng serve --open` for a dev server that opens a new brows
 
 ## Testing
 
-To run the unit tests, use `ng test`. This will run the test suite in Chrome.
+To run the unit tests, use `npm test`. This will run the test suite in Chrome and include a code coverage report.
 
 For cross-browser testing, navigate to `http://localhost:9876` in Safari and Firefox.
