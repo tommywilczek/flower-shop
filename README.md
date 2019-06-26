@@ -18,4 +18,4 @@ This project uses the following practices:
 - Continuous integration
   - Whenever code is pushed to github, TravisCI is configured to run an automated build, lint, and test
 - Code Coverage
-  - Run `ng test --code-coverage` for the coverage summary
+  - Run `ng test --code-coverage` for the coverage summary 
