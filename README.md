@@ -19,3 +19,11 @@ This project uses the following practices:
   - Whenever code is pushed to github, TravisCI is configured to run an automated build, lint, and test
 - Code Coverage
   - Run `ng test --code-coverage` for the coverage summary 
+- Cross-browser testing
+  - All tests were run in Chrome, Safari, and Firefox
+
+## Testing
+
+To run the unit tests, use `ng test`. This will run the test suite in Chrome.
+
+For cross-browser testing, navigate to `http://localhost:9876` in Safari and Firefox.
