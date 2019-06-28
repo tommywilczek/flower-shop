@@ -34,3 +34,8 @@ For cross-browser testing, navigate to `http://localhost:9876` in Safari and Fir
   - Generate component show-flowers
   - Create a service to fetch the flowers
     - Write a test in show-flowers calling this service that hasn't been created yet
+    - Generated FlowerService
+    - Write a test calling FlowerService's getAllFlowers method that doesn't exist yet and expecting a Flower object that is an Observable (because it's being called asyncronously) that doesn't exist
+    - Create a Flower model
+    - Create getAllFlowers method in FlowerService that returns an empty array for now
+    - 
