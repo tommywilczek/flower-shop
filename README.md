@@ -27,3 +27,10 @@ In a new terminal, run `ng serve --open` for a dev server that opens a new brows
 To run the unit tests, use `npm test`. This will run the test suite in Chrome and include a code coverage report.
 
 For cross-browser testing, navigate to `http://localhost:9876` in Safari and Firefox.
+
+## Approach
+
+- First, I need to show the list of all flowers
+  - Generate component show-flowers
+  - Create a service to fetch the flowers
+    - Write a test in show-flowers calling this service that hasn't been created yet
