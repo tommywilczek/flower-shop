@@ -30,6 +30,8 @@ For cross-browser testing, navigate to `http://localhost:9876` in Safari and Fir
 
 ## Approach
 
+Followed the guide in this [Medium article for TDD in Angular](https://medium.com/@johncol/test-driven-development-and-angular-9110d62ce7ec)
+
 - First, I need to show the list of all flowers
   - Generate component show-flowers
   - Create a service to fetch the flowers
@@ -38,4 +40,4 @@ For cross-browser testing, navigate to `http://localhost:9876` in Safari and Fir
     - Write a test calling FlowerService's getAllFlowers method that doesn't exist yet and expecting a Flower object that is an Observable (because it's being called asyncronously) that doesn't exist
     - Create a Flower model
     - Create getAllFlowers method in FlowerService that returns an empty array for now
-    - 
+    - Next, we know that the list of flowers will be fetched from an external source, a rest API, but as our application grows we don’t know if this will always be true, eventually we may need to get this list from the browser cache, IndexedDb, or again, an http resource. We don’t want to deal with these matters in the FlowersService, so we will delegate this responsibility to a FlowersRepository. It will know where to get the flowers from.
