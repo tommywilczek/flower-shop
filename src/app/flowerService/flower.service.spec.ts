@@ -69,5 +69,22 @@ describe('FlowerService', () => {
     });
   });
 
+  it('should return only flowers in stock', (done: DoneFn) => {
+    const flowerNames: any = { active1: 'rose', active2: 'lilac', inactive: 'tulip' };
+    (flowerRepository as any).getRawFlowers.and.returnValue(of([
+      { flowerName: flowerNames.active1, isInStock: true, numberOfPetals: 1, flowerScent: 'Sweet' },
+      { flowerName: flowerNames.active2, isInStock: false, numberOfPetals: 3, flowerScent: 'Aromatic' },
+      { flowerName: flowerNames.inactive, isInStock: true, numberOfPetals: 10, flowerScent: 'Bitter' },
+    ]));
 
+    flowerService.getAllFlowers().subscribe({
+      next: (flowers: Flower[]) => {
+        expect(flowers.length).toBe(2);
+        expect(flowers.find(flower => flower.name === flowerNames.active1)).toBeTruthy();
+        expect(flowers.find(flower => flower.name === flowerNames.active2)).toBeUndefined();
+        expect(flowers.find(flower => flower.name === flowerNames.inactive)).toBeTruthy();
+        done();
+      }
+    });
+  });
 });
