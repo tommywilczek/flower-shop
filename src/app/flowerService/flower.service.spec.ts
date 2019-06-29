@@ -58,12 +58,12 @@ describe('FlowerService', () => {
 
   it('should NOT return flowers that are NOT in stock', (done: DoneFn) => {
     (flowerRepository as any).getRawFlowers.and.returnValue(of([
-      { flowerName: 'Orchid', isInStock: false, numberOfPetals:3, flowerScent: 'Floral' },
+      { flowerName: 'Orchid', isInStock: false, numberOfPetals: 3, flowerScent: 'Floral' },
     ]));
 
     flowerService.getAllFlowers().subscribe({
       next: (flowers: Flower[]) => {
-          expect(flowers.length).toBe(0);
+        expect(flowers.length).toBe(0);
         done();
       }
     });
