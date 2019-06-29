@@ -41,3 +41,5 @@ Followed the guide in this [Medium article for TDD in Angular](https://medium.co
     - Create a Flower model
     - Create getAllFlowers method in FlowerService that returns an empty array for now
     - Next, we know that the list of flowers will be fetched from an external source, a rest API, but as our application grows we don’t know if this will always be true, eventually we may need to get this list from the browser cache, IndexedDb, or again, an http resource. We don’t want to deal with these matters in the FlowersService, so we will delegate this responsibility to a FlowersRepository. It will know where to get the flowers from.
+    - Create FlowersRepository to get the flowers from the database
+    - Since the FlowerService now depends on FlowersRepository, we want to isolate the service, so we'll use a `Jasmine spy` that allows us to configure mock objects instead of the real ones from FlowerRepository

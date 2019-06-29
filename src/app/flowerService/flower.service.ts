@@ -5,7 +5,7 @@ import { Flower } from '../../models/flower.model';
 import { FlowerRepository } from '../../repositories/flower.repository';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FlowerService {
 
