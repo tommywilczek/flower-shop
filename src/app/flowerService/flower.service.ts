@@ -20,13 +20,9 @@ export class FlowerService {
   }
 
   private toListOfFlowers = (flowers: RawFlower[]): Flower[] => {
-    const flowersInStock = [];
-    flowers.forEach(flower => {
-      if (flower.isInStock) {
-        flowersInStock.push(flower);
-      }
-    });
-    return flowersInStock.map(flower => ({
+    return flowers
+      .filter(flower => flower.isInStock)
+      .map(flower => ({
       name: flower.flowerName,
       inStock: flower.isInStock,
       petals: flower.numberOfPetals,
