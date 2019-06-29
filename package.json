@@ -1,6 +1,7 @@
 {
   "name": "flower-shop",
   "version": "0.0.0",
+  "homepage": "https://tommywilczek.github.io/flower-shop",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
