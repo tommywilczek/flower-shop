@@ -39,8 +39,8 @@ describe('FlowerService', () => {
   it('should return a list of registered accounts with a name to display, \
       an account number, and the bank to which it belongs', (done: DoneFn) => {
     (flowerRepository as any).getRawFlowers.and.returnValue(of([
-      { name: 'rose', petals: 7, scent: 'sweet' },
-      { name: 'tulip', petals: 5, scent: 'aromatic' },
+      { flowerName: 'rose', numberOfPetals: 7, flowerScent: 'sweet' },
+      { flowerName: 'tulip', numberOfPetals: 5, flowerScent: 'aromatic' },
     ]));
 
     flowerService.getAllFlowers().subscribe({
