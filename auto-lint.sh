@@ -1,5 +1,9 @@
 while true; do
-    sleep 3; 
-    clear;
-    ng lint;
+    if ng lint; then 
+        clear
+    else
+        played_sound='\7\7\7'
+        printf $played_sound
+        sleep 10
+    fi
 done

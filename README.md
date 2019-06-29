@@ -18,6 +18,8 @@ This project uses the following practices:
 - Version control *committing early and often!*
 - Code Coverage
   - Run `ng test --code-coverage` for the coverage summary 
+- Code Quality
+  - Created a bash script, `auto-lint.sh` that runs lint automatically. If linting fails, it plays an annoying sound to notify you
 
 ## Up and Running
 
