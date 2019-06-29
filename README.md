@@ -10,13 +10,14 @@ This project uses the following practices:
   - Using Karma and Jasmine for Angular front-end
   <!-- - Using Mocha (JavaScript testing framework) and Chai (assertion library) for isolated MongoDB tests -->
   - Test suite listens to changes in files and runs each time a file is saved
+  - Cross-browser testing
+    - All tests were run in Chrome, Safari, and Firefox to ensure cross-browser compatibility
+- Continuous integration and Continuous Delivery pipeline
+  - Whenever code is pushed to GitHub, TravisCI is configured to run an automated build, lint, and run all tests
+  - If the build passes, it is deployed to GitHub Pages
 - Version control *committing early and often!*
-- Continuous integration
-  - Whenever code is pushed to github, TravisCI is configured to run an automated build, lint, and test
 - Code Coverage
   - Run `ng test --code-coverage` for the coverage summary 
-- Cross-browser testing
-  - All tests were run in Chrome, Safari, and Firefox
 
 ## Up and Running
 
