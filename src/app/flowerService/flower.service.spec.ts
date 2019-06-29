@@ -39,8 +39,8 @@ describe('FlowerService', () => {
   it('should return a list of registered accounts with a name to display, \
       an account number, and the bank to which it belongs', (done: DoneFn) => {
     (flowerRepository as any).getRawFlowers.and.returnValue(of([
-      { flowerName: 'rose', numberOfPetals: 7, flowerScent: 'sweet' },
-      { flowerName: 'tulip', numberOfPetals: 5, flowerScent: 'aromatic' },
+      { flowerName: 'Rose', isInStock: true, numberOfPetals: 7, flowerScent: 'Sweet' },
+      { flowerName: 'Tulip', isInStock: true, numberOfPetals: 5, flowerScent: 'Sromatic' },
     ]));
 
     flowerService.getAllFlowers().subscribe({
@@ -55,5 +55,19 @@ describe('FlowerService', () => {
       }
     });
   });
+
+  it('should NOT return flowers that are NOT in stock', (done: DoneFn) => {
+    (flowerRepository as any).getRawFlowers.and.returnValue(of([
+      { flowerName: 'Orchid', isInStock: false, numberOfPetals:3, flowerScent: 'Floral' },
+    ]));
+
+    flowerService.getAllFlowers().subscribe({
+      next: (flowers: Flower[]) => {
+          expect(flowers.length).toBe(0);
+        done();
+      }
+    });
+  });
+
 
 });

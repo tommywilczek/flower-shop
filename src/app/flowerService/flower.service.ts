@@ -20,8 +20,15 @@ export class FlowerService {
   }
 
   private toListOfFlowers = (flowers: RawFlower[]): Flower[] => {
-    return flowers.map(flower => ({
+    let flowersInStock = [];
+    flowers.forEach(flower => {
+      if (flower.isInStock) {
+        flowersInStock.push(flower)
+      }
+    });
+    return flowersInStock.map(flower => ({
       name: flower.flowerName,
+      inStock: flower.isInStock,
       petals: flower.numberOfPetals,
       scent: flower.flowerScent
     }));
