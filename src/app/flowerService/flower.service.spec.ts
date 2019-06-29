@@ -35,4 +35,25 @@ describe('FlowerService', () => {
       }
     });
   });
+
+  it('should return a list of registered accounts with a name to display, \
+      an account number, and the bank to which it belongs', (done: DoneFn) => {
+    (flowerRepository as any).getRawFlowers.and.returnValue(of([
+      { name: 'rose', petals: 7, scent: 'sweet' },
+      { name: 'tulip', petals: 5, scent: 'aromatic' },
+    ]));
+
+    flowerService.getAllFlowers().subscribe({
+      next: (flowers: Flower[]) => {
+        expect(flowers.length).toBe(2);
+        flowers.forEach(flower => {
+          expect(flower.name).toBeTruthy();
+          expect(flower.petals).toBeTruthy();
+          expect(flower.scent).toBeTruthy();
+        });
+        done();
+      }
+    });
+  });
+
 });

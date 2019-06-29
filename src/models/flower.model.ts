@@ -1,1 +1,5 @@
-export interface Flower { }
+export interface Flower {
+    name: string;
+    petals: number;
+    scent: string;
+}
