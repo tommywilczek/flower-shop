@@ -25,7 +25,6 @@ export class ShowFlowersComponent implements OnInit {
     this.flowerService.getAllFlowers().subscribe(flowers => {
       this.flowers = flowers;
     });
-    // this.flowers = [{ name: 'Orchid', inStock: true, petals: 3, scent: 'Floral' }];
   }
 
 }
