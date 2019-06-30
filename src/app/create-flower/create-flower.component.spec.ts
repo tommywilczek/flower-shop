@@ -60,8 +60,7 @@ describe('CreateFlowerComponent', () => {
     expect(radioButtons[1].getAttribute('value')).toBe('Not in stock');
   });
 
-  it('button group should have aria-labelledby="in-stock-radio-label" \
-      and label of the same id should be "In stock or not in stock?"', () => {
+  it('button group should be attached to its label', () => {
 
     const radioButtonGroup = fixture.nativeElement.querySelector('mat-radio-group');
 
@@ -77,6 +76,12 @@ describe('CreateFlowerComponent', () => {
 
     expect(submitButton.hasAttribute('mat-button')).toBeTruthy();
     expect(submitButton.innerText).toBe('Submit');
+  });
+
+  it('submit button should not refresh the page', () => {
+    const submitButton = fixture.nativeElement.querySelector('button');
+
+    expect(submitButton.getAttribute('type')).toBe('button');
   });
 
 });
