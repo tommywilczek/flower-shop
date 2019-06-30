@@ -71,4 +71,10 @@ describe('CreateFlowerComponent', () => {
 
     expect(stockRadioLabel.innerText).toBe('In stock or not in stock?');
   });
+
+  it('submit button should be Angular Material', () => {
+    const submitButton = fixture.nativeElement.querySelector('button');
+
+    expect(submitButton.hasAttribute('mat-button')).toBeTruthy();
+  });
 });
