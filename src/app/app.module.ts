@@ -9,6 +9,7 @@ import { FlowerService } from './flowerService/flower.service';
 import { FlowerRepository } from 'src/repositories/flower.repository';
 import { CreateFlowerComponent } from './create-flower/create-flower.component';
 import { MaterialModule } from 'src/material-module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MaterialModule } from 'src/material-module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MaterialModule
   ],

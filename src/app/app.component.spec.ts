@@ -4,12 +4,14 @@ import { AppComponent } from './app.component';
 import { ShowFlowersComponent } from './show-flowers/show-flowers.component';
 import { CreateFlowerComponent } from './create-flower/create-flower.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule
       ],
       declarations: [
         AppComponent,

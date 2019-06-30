@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Flower } from '../../models/flower.model';
 
 @Component({
   selector: 'app-create-flower',
@@ -7,12 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateFlowerComponent implements OnInit {
 
-  constructor() { }
+  public flower: Flower;
+
+  constructor() {
+    // this.flower = new Flower();
+  }
 
   ngOnInit() {
   }
 
   saveFlower() {
+    // console.log('saving: ', this.flower);
     return;
   }
 }

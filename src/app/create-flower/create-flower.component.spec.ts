@@ -5,6 +5,7 @@ import { CreateFlowerComponent } from './create-flower.component';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 describe('CreateFlowerComponent', () => {
   let component: CreateFlowerComponent;
@@ -13,7 +14,7 @@ describe('CreateFlowerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CreateFlowerComponent ],
-      imports: [MatFormFieldModule, MatInputModule, BrowserAnimationsModule],
+      imports: [MatFormFieldModule, MatInputModule, BrowserAnimationsModule, FormsModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
@@ -119,13 +120,17 @@ describe('CreateFlowerComponent', () => {
 
 
 
-  // it('submit button should send inputs to saveFlower() method', () => {
-  //   const submitButton = fixture.nativeElement.querySelector('button');
-  //   spyOn(component, 'saveFlower');
+  xit('submit button should send inputs as a Flower object to saveFlower() method', () => {
+    const nameTextArea = fixture.nativeElement.querySelectorAll('[placeholder="Name"]')[0];
+    const testName = 'Test Name';
+    nameTextArea.value = testName;
 
-  //   // submitButton.click();
+    const submitButton = fixture.nativeElement.querySelector('button');
+    spyOn(component, 'saveFlower');
 
-  //   // expect(component.saveFlower).toHaveBeenCalledWith();
-  // });
+    submitButton.click();
+
+    expect(component.saveFlower).toHaveBeenCalledWith(testName);
+  });
 
 });

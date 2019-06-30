@@ -64,3 +64,4 @@ Follow my thought process below in excruciating detail:
     - Have Jasmine look at the component's html to see if the list of flowers can be seen
 - Now it's time to let the user create flowers
   - I'll start by test-driving the UI to have input fields use Angular Material
+  - Now time to connect the component to the service with `saveFlowers()` method
