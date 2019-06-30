@@ -4,7 +4,7 @@ while true; do
     else
         played_sound='\7\7\7'
         printf $played_sound
-        sleep 10
+        sleep 20
     fi
-    sleep 10
+    sleep 20
 done
