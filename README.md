@@ -12,6 +12,8 @@ This project uses the following practices:
   - Test suite listens to changes in files and runs each time a file is saved
   - Cross-browser testing
     - All tests were run in Chrome, Safari, and Firefox to ensure cross-browser compatibility
+  <!-- - Test-driving CSS
+    - I also experimented with TDD and CSS, to emulate codifying business requrements into tests -->
 - Continuous integration and Continuous Delivery pipeline
   - Whenever code is pushed to GitHub, TravisCI is configured to run an automated build, lint, and run all tests
   - If the build passes, it is deployed to GitHub Pages
