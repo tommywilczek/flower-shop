@@ -78,10 +78,11 @@ describe('CreateFlowerComponent', () => {
     expect(submitButton.innerText).toBe('Submit');
   });
 
-  it('submit button should not refresh the page', () => {
+  it('submit button should clear form and should not refresh the page', () => {
     const submitButton = fixture.nativeElement.querySelector('button');
 
-    expect(submitButton.getAttribute('type')).toBe('button');
+    expect(submitButton.getAttribute('type')).toBe('reset');
+    expect(submitButton.getAttribute('value')).toBe('Reset');
   });
 
 });
