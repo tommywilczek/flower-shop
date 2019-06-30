@@ -33,4 +33,8 @@ export class FlowerService {
       scent: flower.flowerScent
     };
   }
+
+  public saveFlowerInService(flower: Flower) {
+    return;
+  }
 }

@@ -6,10 +6,14 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FlowerService } from '../flowerService/flower.service';
+import { Flower } from 'src/models/flower.model';
 
 describe('CreateFlowerComponent', () => {
   let component: CreateFlowerComponent;
   let fixture: ComponentFixture<CreateFlowerComponent>;
+
+  let flowerService: FlowerService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,6 +27,7 @@ describe('CreateFlowerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CreateFlowerComponent);
     component = fixture.componentInstance;
+    flowerService = jasmine.createSpyObj('FlowerService', ['saveFlowerInService']);
     fixture.detectChanges();
   });
 
@@ -118,8 +123,6 @@ describe('CreateFlowerComponent', () => {
     expect(nameTextArea.value).toBe('Test Name');
   });
 
-
-
   xit('submit button should send inputs as a Flower object to saveFlower() method', () => {
     const nameTextArea = fixture.nativeElement.querySelectorAll('[placeholder="Name"]')[0];
     const testName = 'Test Name';
@@ -131,6 +134,21 @@ describe('CreateFlowerComponent', () => {
     submitButton.click();
 
     expect(component.saveFlower).toHaveBeenCalledWith(testName);
+  });
+
+  it('saveFlowers should pass the component\'s flower object to the flowerService', () => {
+    let sampleFlower: Flower;
+    sampleFlower = { name: 'Orchid', inStock: true, petals: 3, scent: 'Floral' };
+
+    component = new CreateFlowerComponent(flowerService);
+
+    // spyOn(flowerService, 'saveFlowerInService');
+
+    component.flower = sampleFlower;
+
+    component.saveFlower();
+
+    expect(flowerService.saveFlowerInService).toHaveBeenCalledWith(sampleFlower);
   });
 
 });
