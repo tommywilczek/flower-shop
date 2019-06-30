@@ -66,7 +66,7 @@ describe('CreateFlowerComponent', () => {
     const radioButtonGroup = fixture.nativeElement.querySelector('mat-radio-group');
 
     expect(radioButtonGroup.getAttribute('aria-labelledby')).toBe('in-stock-radio-label');
-        
+
     const stockRadioLabel = fixture.nativeElement.querySelector('#in-stock-radio-label');
 
     expect(stockRadioLabel.innerText).toBe('In stock or not in stock?');
