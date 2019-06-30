@@ -60,15 +60,15 @@ describe('CreateFlowerComponent', () => {
     expect(radioButtons[1].getAttribute('value')).toBe('Not in stock');
   });
 
-  it('button group should have a label of id="in-stock-radio-label" to be "In stock or not in stock?"', () => {
+  it('button group should have aria-labelledby="in-stock-radio-label" \
+      and label of the same id should be "In stock or not in stock?"', () => {
+
+    const radioButtonGroup = fixture.nativeElement.querySelector('mat-radio-group');
+
+    expect(radioButtonGroup.getAttribute('aria-labelledby')).toBe('in-stock-radio-label');
+        
     const stockRadioLabel = fixture.nativeElement.querySelector('#in-stock-radio-label');
 
     expect(stockRadioLabel.innerText).toBe('In stock or not in stock?');
-  });
-
-  xit('button group should be aria-labelledby with the same id as the button label', () => {
-    const radioButtonGroup = fixture.nativeElement.getElementsByTagName('mat-radio-group');
-
-    expect(radioButtonGroup[0].getAttribute('aria-label')).toBe('In stock or not in stock?');
   });
 });
