@@ -53,11 +53,12 @@ describe('ShowFlowersComponent', () => {
     ];
     component.flowers = flowersList;
     fixture.detectChanges();
-    
+
     let displayedFlowersAsHtml: HTMLElement = fixture.nativeElement;
     displayedFlowersAsHtml = displayedFlowersAsHtml.querySelector('li');
 
-    expect(displayedFlowersAsHtml.textContent).toBe(flowersList[0].name + ': ' + flowersList[0].petals + ' petals, smells ' + flowersList[0].scent);
+    expect(displayedFlowersAsHtml.textContent)
+      .toBe(flowersList[0].name + ': ' + flowersList[0].petals + ' petals, smells ' + flowersList[0].scent);
   });
 
 });
