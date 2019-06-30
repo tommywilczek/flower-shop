@@ -1,5 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CreateFlowerComponent } from './create-flower.component';
 
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
@@ -123,6 +122,22 @@ describe('CreateFlowerComponent', () => {
     expect(nameTextArea.value).toBe('Test Name');
   });
 
+  xit('the input in the name field becomes the flower name', fakeAsync(() => {
+    const nameTextArea = fixture.nativeElement.querySelectorAll('[placeholder="Name"]')[0];
+    const testName = 'Test Name';
+
+    nameTextArea.focus();
+    nameTextArea.value = testName;
+
+    nameTextArea.dispatchEvent(new Event('input'));
+    tick();
+    fixture.detectChanges();
+
+    expect(component.flower.name).toBe(testName);
+  }));
+
+
+
   xit('submit button should send inputs as a Flower object to saveFlower() method', () => {
     const nameTextArea = fixture.nativeElement.querySelectorAll('[placeholder="Name"]')[0];
     const testName = 'Test Name';
@@ -141,8 +156,6 @@ describe('CreateFlowerComponent', () => {
     sampleFlower = { name: 'Orchid', inStock: true, petals: 3, scent: 'Floral' };
 
     component = new CreateFlowerComponent(flowerService);
-
-    // spyOn(flowerService, 'saveFlowerInService');
 
     component.flower = sampleFlower;
 

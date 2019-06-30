@@ -3,13 +3,18 @@
       <textarea 
         matInput 
         placeholder="Name"
+        [(ngModel)]="flower.name"
+        name="name"
         required
       ></textarea>
   </mat-form-field>
+  <p>{{flower.name}}</p>
   <mat-form-field>
       <textarea 
         matInput 
         placeholder="Number of petals"
+        [(ngModel)]="flower.petals"
+        name="petals"
         required
       ></textarea>
   </mat-form-field>
