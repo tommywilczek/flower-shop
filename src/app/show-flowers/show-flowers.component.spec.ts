@@ -68,11 +68,17 @@ describe('ShowFlowersComponent', () => {
     component.flowers = flowersList;
     fixture.detectChanges();
 
-    let displayedFlowersAsHtml: HTMLElement = fixture.nativeElement;
-    displayedFlowersAsHtml = displayedFlowersAsHtml.querySelector('li');
+    const displayedFlowersAsHtml = fixture.nativeElement.getElementsByTagName('li');
 
-    expect(displayedFlowersAsHtml.textContent)
+    expect(displayedFlowersAsHtml[0].textContent)
       .toBe(flowersList[0].name + ': ' + flowersList[0].petals + ' petals, smells ' + flowersList[0].scent);
-  });
+
+    expect(displayedFlowersAsHtml[1].textContent)
+      .toBe(flowersList[1].name + ': ' + flowersList[1].petals + ' petals, smells ' + flowersList[1].scent);
+
+    expect(displayedFlowersAsHtml[2].textContent)
+      .toBe(flowersList[2].name + ': ' + flowersList[2].petals + ' petals, smells ' + flowersList[2].scent);
+
+    });
 
 });
