@@ -44,6 +44,20 @@ describe('ShowFlowersComponent', () => {
     expect(component.flowers[0]).toEqual(sampleFlower);
   });
 
+  it('should get the list of flowers when the component is created', () => {
+    component = new ShowFlowersComponent(flowerService);
+
+    expect(component.flowers).toBeUndefined();
+
+    spyOn(component, 'getFlowers');
+
+    fixture.detectChanges();
+
+    component.ngOnInit();
+
+    expect(component.getFlowers).toHaveBeenCalled();
+  });
+
   it('should display the names, petals, and scents of all flowers', () => {
     let flowersList: Flower[];
     flowersList = [
