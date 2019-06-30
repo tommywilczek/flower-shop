@@ -55,4 +55,4 @@ Follow my thought process below in excruciating detail:
     - The component should call it's `getFlowers()` method when it is created
     - Have Jasmine look at the component's html to see if the list of flowers can be seen
 - Now it's time to let the user create flowers
-  - I'll start by test-driving the UI to have input fields
+  - I'll start by test-driving the UI to have input fields use Angular Material
