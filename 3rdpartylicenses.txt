@@ -70,6 +70,8 @@ THE SOFTWARE.
 
 @angular/material/form-field
 
+@angular/material/radio
+
 @angular/material/snack-bar
 
 @angular/material/tooltip
