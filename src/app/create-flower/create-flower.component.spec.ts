@@ -46,7 +46,23 @@ describe('CreateFlowerComponent', () => {
     expect(inputTextArea[2].placeholder).toBe('Scent');
   });
 
-  it('should have radio button for inStock: yes or no', () => {
+  it('should have radio button for inStock: "In stock" or "Not in stock" \
+      as Angular Material radio button in radio group', () => {
 
+    const radioButtonGroup = fixture.nativeElement.getElementsByTagName('mat-radio-group');
+
+    const radioButtons = radioButtonGroup[0].children;
+
+    expect(radioButtons[0].innerText).toBe('In stock');
+    expect(radioButtons[1].innerText).toBe('Not in stock');
+
+    expect(radioButtons[0].getAttribute('value')).toBe('In stock');
+    expect(radioButtons[1].getAttribute('value')).toBe('Not in stock');
+  });
+
+  it('button group should be aria-labeled as "In stock or not in stock?"', () => {
+    const radioButtonGroup = fixture.nativeElement.getElementsByTagName('mat-radio-group');
+
+    expect(radioButtonGroup[0].getAttribute('aria-label')).toBe('In stock or not in stock?');
   });
 });

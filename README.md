@@ -21,6 +21,12 @@ This project uses the following practices:
 - Code Quality
   - Created a bash script, `auto-lint.sh` that runs lint automatically. If linting fails, it plays an annoying sound to notify you
 
+## Accessibility
+
+Accessibility tests such as those that test `aria-label` were used in UI components.
+
+Additionally, manual testing with a screen reader was used.
+
 ## Up and Running
 
 In a new terminal, run `ng serve --open` for a dev server that opens a new browser to `http://localhost:4200/`.
