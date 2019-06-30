@@ -1,18 +1,31 @@
 <form >
   <mat-form-field>
-      <textarea matInput placeholder="Name"></textarea>
+      <textarea 
+        matInput 
+        placeholder="Name"
+        required
+      ></textarea>
   </mat-form-field>
   <mat-form-field>
-      <textarea matInput placeholder="Number of petals"></textarea>
+      <textarea 
+        matInput 
+        placeholder="Number of petals"
+        required
+      ></textarea>
   </mat-form-field>
   <mat-form-field>
-      <textarea matInput placeholder="Scent"></textarea>
+      <textarea 
+        matInput 
+        placeholder="Scent"
+        required
+      ></textarea>
   </mat-form-field>
+
 
   <label id="in-stock-radio-label">In stock or not in stock?</label>
   <mat-radio-group aria-labelledby="in-stock-radio-label">
-    <mat-radio-button value="In stock">In stock</mat-radio-button>
-    <mat-radio-button value="Not in stock">Not in stock</mat-radio-button>
+    <mat-radio-button value="In stock" required>In stock</mat-radio-button>
+    <mat-radio-button value="Not in stock" required>Not in stock</mat-radio-button>
   </mat-radio-group>
 
   <button 

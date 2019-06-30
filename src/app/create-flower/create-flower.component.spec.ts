@@ -60,6 +60,19 @@ describe('CreateFlowerComponent', () => {
     expect(radioButtons[1].getAttribute('value')).toBe('Not in stock');
   });
 
+  // it('inputs should be shown as required', () => {
+  //   const inputTextArea = fixture.nativeElement.getElementsByTagName('textarea');
+
+  //   const radioButtons = fixture.nativeElement.getElementsByTagName('mat-radio-button');
+
+  //   expect(inputTextArea[0].hasAttribute('required')).toBe(true);
+  //   expect(inputTextArea[1].hasAttribute('required')).toBe(true);
+  //   expect(inputTextArea[2].hasAttribute('required')).toBe(true);
+
+  //   expect(radioButtons[0].hasAttribute('required')).toBe(true);
+  //   expect(radioButtons[1].hasAttribute('required')).toBe(true);
+  // });
+
   it('button group should be attached to its label', () => {
 
     const radioButtonGroup = fixture.nativeElement.querySelector('mat-radio-group');
