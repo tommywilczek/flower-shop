@@ -22,11 +22,15 @@ export class FlowerService {
   private toListOfFlowers = (flowers: RawFlower[]): Flower[] => {
     return flowers
       .filter(flower => flower.isInStock)
-      .map(flower => ({
+      .map(this.toFlower);
+  }
+
+  private toFlower = (flower: RawFlower): Flower => {
+    return {
       name: flower.flowerName,
       inStock: flower.isInStock,
       petals: flower.numberOfPetals,
       scent: flower.flowerScent
-    }));
+    };
   }
 }
