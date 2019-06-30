@@ -30,12 +30,23 @@ describe('CreateFlowerComponent', () => {
   });
 
   it('should have a form with Angular Material input fields', () => {
-
     let inputForm: HTMLElement = fixture.nativeElement;
     inputForm = inputForm.querySelector('form');
 
     const inputFields = inputForm.querySelector('mat-form-field');
 
     expect(inputFields).toBeTruthy();
+  });
+
+  it('should have input fields for name, petals, and scent', () => {
+    const inputTextArea = fixture.nativeElement.getElementsByTagName('textarea');
+
+    expect(inputTextArea[0].placeholder).toBe('Name');
+    expect(inputTextArea[1].placeholder).toBe('Number of petals');
+    expect(inputTextArea[2].placeholder).toBe('Scent');
+  });
+
+  it('should have radio button for inStock: yes or no', () => {
+
   });
 });
