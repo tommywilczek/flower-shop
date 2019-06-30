@@ -107,4 +107,25 @@ describe('CreateFlowerComponent', () => {
     expect(component.saveFlower).toHaveBeenCalled();
   });
 
+  it('can input into a text field', () => {
+    const nameTextArea = fixture.nativeElement.querySelectorAll('[placeholder="Name"]')[0];
+
+    expect(nameTextArea.value).toBe('');
+
+    nameTextArea.value = 'Test Name';
+
+    expect(nameTextArea.value).toBe('Test Name');
+  });
+
+
+
+  // it('submit button should send inputs to saveFlower() method', () => {
+  //   const submitButton = fixture.nativeElement.querySelector('button');
+  //   spyOn(component, 'saveFlower');
+
+  //   // submitButton.click();
+
+  //   // expect(component.saveFlower).toHaveBeenCalledWith();
+  // });
+
 });
