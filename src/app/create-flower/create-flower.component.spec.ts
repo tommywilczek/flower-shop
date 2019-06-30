@@ -85,4 +85,13 @@ describe('CreateFlowerComponent', () => {
     expect(submitButton.getAttribute('value')).toBe('Reset');
   });
 
+  it('submit button should call the saveFlower() method', () => {
+    const submitButton = fixture.nativeElement.querySelector('button');
+    spyOn(component, 'saveFlower');
+
+    submitButton.click();
+
+    expect(component.saveFlower).toHaveBeenCalled();
+  });
+
 });
