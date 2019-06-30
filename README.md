@@ -35,6 +35,8 @@ For cross-browser testing, navigate to `http://localhost:9876` in Safari and Fir
 
 Followed the guide in this [Medium article for TDD in Angular](https://medium.com/@johncol/test-driven-development-and-angular-9110d62ce7ec)
 
+Follow my thought process below in excruciating detail:
+
 - First, I need to show the list of all flowers
   - Generate component `show-flowers`
   - Create a service to fetch the flowers
@@ -48,4 +50,8 @@ Followed the guide in this [Medium article for TDD in Angular](https://medium.co
     - Since the `FlowerService` now depends on `FlowerRepository`, we want to isolate the service, so we'll use a `Jasmine spy` that allows us to configure mock objects instead of the real ones from `FlowerRepository`
     - Next, let’s test that the service returns a list of flowers with a name to display, an number of petals, and scent. We'll do this by having our spy of `FlowerRepository`'s `getRawFlowers` function return the list we tell it to.
     - The final requirement for `flower-service` is that the list should only contain flowers that are in stock. Let's create a new attribute called `inStock` in the `RawFlower` model (test-driven, of course)
-  - Test drive `show-flowers` to show a list of flowers
+  - `show-flowers` should show a list of flowers
+    - Have the component take objects from the `flower-service` and put them into the component's `flowers` array
+    - The component should call it's `getFlowers()` method when it is created
+    - Have Jasmine look at the component's html to see if the list of flowers can be seen
+  - 
