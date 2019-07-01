@@ -31,4 +31,28 @@ describe('FlowerRepository', () => {
 
   //   expect(returnedRawFlowers).toBe(testRawFlowers);
   // });
+
+  it('should save flowers to the mock database', () => {
+    MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
+    expect(MOCKRAWFLOWERS).toEqual([]);
+
+    const testRawFlowers = [
+      {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
+      {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
+      {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
+    ];
+
+    testRawFlowers.forEach(rawFlower => {
+      MOCKRAWFLOWERS.push(rawFlower);
+    });
+    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+
+    const addedTestRawFlower = {flowerName: 'test4', isInStock: true, numberOfPetals: 3, flowerScent: 'testScent4'};
+
+    flowerRepository.saveRawFlower(addedTestRawFlower);
+    testRawFlowers.push(addedTestRawFlower);
+
+    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+  });
+
 });

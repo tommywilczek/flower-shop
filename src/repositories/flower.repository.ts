@@ -10,6 +10,6 @@ export class FlowerRepository {
   }
 
   public saveRawFlower(rawFlower: RawFlower) {
-    return;
+    MOCKRAWFLOWERS.push(rawFlower);
   }
 }
