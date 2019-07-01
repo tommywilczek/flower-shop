@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { FlowerService } from './flower.service';
 import { FlowerRepository } from 'src/repositories/flower.repository';
 import { Flower } from '../../models/flower.model';
+import { componentFactoryName } from '@angular/compiler';
+import { RawFlower } from 'src/models/raw-flower.model';
 
 describe('FlowerService', () => {
 
@@ -15,7 +17,7 @@ describe('FlowerService', () => {
   }));
 
   beforeEach(() => {
-    flowerRepository = jasmine.createSpyObj('FlowerRepository', ['getRawFlowers']);
+    flowerRepository = jasmine.createSpyObj('FlowerRepository', ['getRawFlowers', 'saveRawFlower']);
     flowerService = new FlowerService(flowerRepository);
   });
 
@@ -91,4 +93,17 @@ describe('FlowerService', () => {
       }
     });
   });
+
+  it('should save a Flower object as a RawFlower object in the FlowerRepository', () => {
+    let sampleFlower: Flower;
+    sampleFlower = { name: 'Orchid', inStock: true, petals: 3, scent: 'Floral' };
+
+    flowerService.saveFlowerInService(sampleFlower);
+
+    let sampleRawFlower: RawFlower;
+    sampleRawFlower = { flowerName: 'Orchid', isInStock: true, numberOfPetals: 3, flowerScent: 'Floral' };
+
+    expect(flowerRepository.saveRawFlower).toHaveBeenCalledWith(sampleRawFlower);
+  });
+
 });

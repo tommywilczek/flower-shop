@@ -35,6 +35,14 @@ export class FlowerService {
   }
 
   public saveFlowerInService(flower: Flower) {
-    return;
+    let rawFlower: RawFlower;
+    rawFlower = {
+      flowerName: flower.name,
+      isInStock: flower.inStock,
+      numberOfPetals: flower.petals,
+      flowerScent: flower.scent
+    };
+
+    this.flowerRepository.saveRawFlower(rawFlower);
   }
 }
