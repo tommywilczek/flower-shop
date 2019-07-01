@@ -41,8 +41,8 @@ describe('FlowerService', () => {
   it('should return a list of registered accounts with a name to display, \
       an account number, and the bank to which it belongs', (done: DoneFn) => {
     (flowerRepository as any).getRawFlowers.and.returnValue(of([
-      { flowerName: 'Rose', isInStock: true, numberOfPetals: 7, flowerScent: 'Sweet' },
-      { flowerName: 'Tulip', isInStock: true, numberOfPetals: 5, flowerScent: 'Sromatic' },
+      { flowerName: 'Rose', isInStock: 'true', numberOfPetals: '7', flowerScent: 'Sweet' },
+      { flowerName: 'Tulip', isInStock: 'true', numberOfPetals: '5', flowerScent: 'Sromatic' },
     ]));
 
     flowerService.getAllFlowers().subscribe({
@@ -96,7 +96,7 @@ describe('FlowerService', () => {
 
   it('should save a Flower object as a RawFlower object in the FlowerRepository', () => {
     let sampleFlower: Flower;
-    sampleFlower = { name: 'Orchid', inStock: true, petals: 3, scent: 'Floral' };
+    sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
 
     flowerService.saveFlowerInService(sampleFlower);
 

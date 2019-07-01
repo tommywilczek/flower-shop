@@ -153,7 +153,7 @@ describe('CreateFlowerComponent', () => {
 
   it('saveFlowers should pass the component\'s flower object to the flowerService', () => {
     let sampleFlower: Flower;
-    sampleFlower = { name: 'Orchid', inStock: true, petals: 3, scent: 'Floral' };
+    sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
 
     component = new CreateFlowerComponent(flowerService);
 

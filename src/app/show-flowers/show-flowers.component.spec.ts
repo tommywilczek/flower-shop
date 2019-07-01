@@ -33,7 +33,7 @@ describe('ShowFlowersComponent', () => {
     component = new ShowFlowersComponent(flowerService);
 
     let sampleFlower: Flower;
-    sampleFlower = { name: 'Orchid', inStock: true, petals: 3, scent: 'Floral' };
+    sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
 
     (flowerService as any).getAllFlowers.and.returnValue(of([
       sampleFlower,
@@ -61,9 +61,9 @@ describe('ShowFlowersComponent', () => {
   it('should display the names, petals, and scents of all flowers', () => {
     let flowersList: Flower[];
     flowersList = [
-      { name: 'Orchid', inStock: true, petals: 3, scent: 'Floral' },
-      { name: 'Rose', inStock: true, petals: 7, scent: 'Sweet' },
-      { name: 'Dandelion', inStock: true, petals: 100, scent: 'Grassy' },
+      { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' },
+      { name: 'Rose', inStock: 'true', petals: '7', scent: 'Sweet' },
+      { name: 'Dandelion', inStock: 'true', petals: '100', scent: 'Grassy' },
     ];
     component.flowers = flowersList;
     fixture.detectChanges();

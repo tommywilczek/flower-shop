@@ -28,8 +28,8 @@ export class FlowerService {
   private toFlower = (flower: RawFlower): Flower => {
     return {
       name: flower.flowerName,
-      inStock: flower.isInStock,
-      petals: flower.numberOfPetals,
+      inStock: String(flower.isInStock),
+      petals: String(flower.numberOfPetals),
       scent: flower.flowerScent
     };
   }
@@ -38,8 +38,8 @@ export class FlowerService {
     let rawFlower: RawFlower;
     rawFlower = {
       flowerName: flower.name,
-      isInStock: flower.inStock,
-      numberOfPetals: flower.petals,
+      isInStock: (flower.inStock === 'true'),
+      numberOfPetals: Number(flower.petals),
       flowerScent: flower.scent
     };
 

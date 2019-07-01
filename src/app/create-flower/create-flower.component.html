@@ -8,7 +8,6 @@
         required
       ></textarea>
   </mat-form-field>
-  <p>{{flower.name}}</p>
   <mat-form-field>
       <textarea 
         matInput 
@@ -22,15 +21,22 @@
       <textarea 
         matInput 
         placeholder="Scent"
+        [(ngModel)]="flower.scent"
+        name="scent"
         required
       ></textarea>
   </mat-form-field>
 
 
   <label id="in-stock-radio-label">In stock or not in stock?</label>
-  <mat-radio-group aria-labelledby="in-stock-radio-label">
-    <mat-radio-button value="In stock" required>In stock</mat-radio-button>
-    <mat-radio-button value="Not in stock" required>Not in stock</mat-radio-button>
+  <mat-radio-group 
+    aria-labelledby="in-stock-radio-label"
+    [(ngModel)]="flower.inStock"
+    name="inStock"
+    ngDefaultControl
+    >
+      <mat-radio-button value="In stock" required>In stock</mat-radio-button>
+      <mat-radio-button value="Not in stock" required>Not in stock</mat-radio-button>
   </mat-radio-group>
 
   <button 
