@@ -35,6 +35,17 @@ export class FlowerService {
     };
   }
 
+  convertRawFlowerToFlower(rawFlower: RawFlower): Flower {
+    let flower: Flower;
+    flower = {
+      name: rawFlower.flowerName,
+      inStock: String(rawFlower.isInStock),
+      petals: String(rawFlower.numberOfPetals),
+      scent: rawFlower.flowerScent
+    };
+    return flower;
+  }
+
   public saveFlowerInService(flower: Flower) {
     const rawFlower = this.convertFlowerToRawFlower(flower);
     this.saveRawFlower(rawFlower);

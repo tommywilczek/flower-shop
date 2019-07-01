@@ -38,12 +38,28 @@ describe('FlowerService', () => {
     });
   });
 
-  it('should return a list of registered accounts with a name to display, \
-      an account number, and the bank to which it belongs', (done: DoneFn) => {
-    (flowerRepository as any).getRawFlowers.and.returnValue(of([
-      { flowerName: 'Rose', isInStock: 'true', numberOfPetals: '7', flowerScent: 'Sweet' },
-      { flowerName: 'Tulip', isInStock: 'true', numberOfPetals: '5', flowerScent: 'Sromatic' },
-    ]));
+  it('should convert a flower into a raw flower', () => {
+    let sampleRawFlower: RawFlower;
+    sampleRawFlower = { flowerName: 'Orchid', isInStock: true, numberOfPetals: 3, flowerScent: 'Floral' };
+
+    let sampleFlower: Flower;
+    sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
+
+    const sampleRawFlowerNowFlower = flowerService.convertRawFlowerToFlower(sampleRawFlower);
+
+    expect(sampleRawFlowerNowFlower).toEqual(sampleFlower);
+  });
+
+  xit('should return a list of flowers with a name, \
+      inStock, petals, and scent', (done: DoneFn) => {
+
+    let testRawFlowers: RawFlower[];
+    testRawFlowers = [
+      { flowerName: 'Rose', isInStock: true, numberOfPetals: 7, flowerScent: 'Sweet' },
+      { flowerName: 'Tulip', isInStock: true, numberOfPetals: 5, flowerScent: 'Aromatic' }
+    ];
+
+    createMockDatabase(testRawFlowers);
 
     flowerService.getAllFlowers().subscribe({
       next: (flowers: Flower[]) => {
