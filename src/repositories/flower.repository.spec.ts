@@ -18,20 +18,6 @@ describe('FlowerRepository', () => {
     expect(new FlowerRepository()).toBeTruthy();
   });
 
-  // xit('should get RawFlowers from the mock database', () => {
-  //   let testRawFlowers: RawFlower[];
-  //   testRawFlowers = [
-  //     {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
-  //     {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
-  //     {flowerName: 'test2', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
-  //   ]
-  //   flowerRepository.mockedRawFlowers = testRawFlowers;
-
-  //   const returnedRawFlowers = flowerRepository.getRawFlowers();
-
-  //   expect(returnedRawFlowers).toBe(testRawFlowers);
-  // });
-
   it('should save flowers to the mock database', () => {
     MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
     expect(MOCKRAWFLOWERS).toEqual([]);
@@ -54,5 +40,26 @@ describe('FlowerRepository', () => {
 
     expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
   });
+
+  // it('should get all rawFlowers from the mock database as Observables', () => {
+  //   MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
+  //   expect(MOCKRAWFLOWERS).toEqual([]);
+
+  //   let testRawFlowers: RawFlower[];
+  //   testRawFlowers = [
+  //     {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
+  //     {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
+  //     {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
+  //   ];
+
+  //   testRawFlowers.forEach(rawFlower => {
+  //     MOCKRAWFLOWERS.push(rawFlower);
+  //   });
+  //   expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+
+  //   const returnedRawFlowers = flowerRepository.getRawFlowers();
+
+  //   expect(returnedRawFlowers).toEqual(testRawFlowers); // expexts testRawFlowers to be an Observable and it's NOT
+  // });
 
 });

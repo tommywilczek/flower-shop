@@ -2,8 +2,7 @@
   - "todo list" style app, single page, able to click plus to add, and something else to edit
 
 - flower-repository
-  - !!! DID NOT TEST: Saves raw flower
-  - !!! DID NOT TEST: gets all raw flowers
+  - !!! DID NOT TEST: gets all raw flowers, hung up on the Observables
 
 - in create-flower.component 
     !!! DID NOT TEST: Can't figure out how to make sure text inputted gets to the ngModel ex)input in the name field should make that word the flower.name
