@@ -4,8 +4,8 @@ import { Observable, of } from 'rxjs';
 import { FlowerService } from './flower.service';
 import { FlowerRepository } from 'src/repositories/flower.repository';
 import { Flower } from '../../models/flower.model';
-import { componentFactoryName } from '@angular/compiler';
 import { RawFlower } from 'src/models/raw-flower.model';
+import { MOCKRAWFLOWERS } from 'src/repositories/mock-flowers';
 
 describe('FlowerService', () => {
 
@@ -94,16 +94,69 @@ describe('FlowerService', () => {
     });
   });
 
-  it('should save a Flower object as a RawFlower object in the FlowerRepository', () => {
+  it('should save a Flower object to a RawFlower object', () => {
     let sampleFlower: Flower;
     sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
-
-    flowerService.saveFlowerInService(sampleFlower);
 
     let sampleRawFlower: RawFlower;
     sampleRawFlower = { flowerName: 'Orchid', isInStock: true, numberOfPetals: 3, flowerScent: 'Floral' };
 
-    expect(flowerRepository.saveRawFlower).toHaveBeenCalledWith(sampleRawFlower);
+    const sampleFlowerNowRawFlower = flowerService.convertFlowerToRawFlower(sampleFlower);
+
+    expect(sampleFlowerNowRawFlower).toEqual(sampleRawFlower);
   });
+
+  it('should save raw flowers to the mock database', () => {
+    MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
+    expect(MOCKRAWFLOWERS).toEqual([]);
+
+    const testRawFlowers = [
+      {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
+      {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
+      {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
+    ];
+
+    testRawFlowers.forEach(rawFlower => {
+      MOCKRAWFLOWERS.push(rawFlower);
+    });
+    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+
+    const addedTestRawFlower = {flowerName: 'test4', isInStock: true, numberOfPetals: 3, flowerScent: 'testScent4'};
+
+    flowerService.saveRawFlower(addedTestRawFlower);
+    testRawFlowers.push(addedTestRawFlower);
+
+    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+  });
+
+  it('should save Flower objects to the mock database as RawFlower objects', () => {
+    // Set up mock database
+    MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
+    expect(MOCKRAWFLOWERS).toEqual([]);
+
+    const testRawFlowers = [
+      {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
+      {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
+      {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
+    ];
+
+    testRawFlowers.forEach(rawFlower => {
+      MOCKRAWFLOWERS.push(rawFlower);
+    });
+    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+    // Done setting up mock database
+
+    let sampleFlower: Flower;
+    sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
+
+    let sampleRawFlower: RawFlower;
+    sampleRawFlower = { flowerName: 'Orchid', isInStock: true, numberOfPetals: 3, flowerScent: 'Floral' };
+
+    flowerService.saveFlowerInService(sampleFlower);
+    testRawFlowers.push(sampleRawFlower);
+
+    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+  });
+
 
 });

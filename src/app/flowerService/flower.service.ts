@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Flower } from '../../models/flower.model';
 import { FlowerRepository } from '../../repositories/flower.repository';
 import { RawFlower } from 'src/models/raw-flower.model';
+import { MOCKRAWFLOWERS } from 'src/repositories/mock-flowers';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,11 @@ export class FlowerService {
   }
 
   public saveFlowerInService(flower: Flower) {
+    const rawFlower = this.convertFlowerToRawFlower(flower);
+    this.saveRawFlower(rawFlower);
+  }
+
+  public convertFlowerToRawFlower(flower: Flower): RawFlower {
     let rawFlower: RawFlower;
     rawFlower = {
       flowerName: flower.name,
@@ -42,7 +48,10 @@ export class FlowerService {
       numberOfPetals: Number(flower.petals),
       flowerScent: flower.scent
     };
+    return rawFlower;
+  }
 
-    this.flowerRepository.saveRawFlower(rawFlower);
+  saveRawFlower(rawFlower: RawFlower) {
+    MOCKRAWFLOWERS.push(rawFlower);
   }
 }
