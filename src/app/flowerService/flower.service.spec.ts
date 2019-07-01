@@ -107,19 +107,13 @@ describe('FlowerService', () => {
   });
 
   it('should save raw flowers to the mock database', () => {
-    MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
-    expect(MOCKRAWFLOWERS).toEqual([]);
-
     const testRawFlowers = [
       {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
       {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
 
-    testRawFlowers.forEach(rawFlower => {
-      MOCKRAWFLOWERS.push(rawFlower);
-    });
-    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+    createMockDatabase(testRawFlowers);
 
     const addedTestRawFlower = {flowerName: 'test4', isInStock: true, numberOfPetals: 3, flowerScent: 'testScent4'};
 
@@ -130,21 +124,13 @@ describe('FlowerService', () => {
   });
 
   it('should save Flower objects to the mock database as RawFlower objects', () => {
-    // Set up mock database
-    MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
-    expect(MOCKRAWFLOWERS).toEqual([]);
-
     const testRawFlowers = [
       {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
       {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
 
-    testRawFlowers.forEach(rawFlower => {
-      MOCKRAWFLOWERS.push(rawFlower);
-    });
-    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
-    // Done setting up mock database
+    createMockDatabase(testRawFlowers);
 
     let sampleFlower: Flower;
     sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
@@ -160,3 +146,13 @@ describe('FlowerService', () => {
 
 
 });
+
+function createMockDatabase(testRawFlowers) {
+  MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
+
+  testRawFlowers.forEach(rawFlower => {
+    MOCKRAWFLOWERS.push(rawFlower);
+  });
+
+  return MOCKRAWFLOWERS;
+}
