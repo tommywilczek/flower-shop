@@ -50,62 +50,25 @@ describe('FlowerService', () => {
     expect(sampleRawFlowerNowFlower).toEqual(sampleFlower);
   });
 
-  xit('should return a list of flowers with a name, \
-      inStock, petals, and scent', (done: DoneFn) => {
-
+  it('should get all flowers in the mock database', () => {
     let testRawFlowers: RawFlower[];
     testRawFlowers = [
-      { flowerName: 'Rose', isInStock: true, numberOfPetals: 7, flowerScent: 'Sweet' },
-      { flowerName: 'Tulip', isInStock: true, numberOfPetals: 5, flowerScent: 'Aromatic' }
+      {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
+      {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
+      {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
-
     createMockDatabase(testRawFlowers);
 
-    flowerService.getAllFlowers().subscribe({
-      next: (flowers: Flower[]) => {
-        expect(flowers.length).toBe(2);
-        flowers.forEach(flower => {
-          expect(flower.name).toBeTruthy();
-          expect(flower.petals).toBeTruthy();
-          expect(flower.scent).toBeTruthy();
-        });
-        done();
-      }
-    });
-  });
-
-  it('should NOT return flowers that are NOT in stock', (done: DoneFn) => {
-    (flowerRepository as any).getRawFlowers.and.returnValue(of([
-      { flowerName: 'Orchid', isInStock: false, numberOfPetals: 3, flowerScent: 'Floral' },
-    ]));
+    let testFlowers: Flower[];
+    testFlowers = [
+      {name: 'test1', inStock: 'true', petals: '0', scent: 'testScent1'},
+      {name: 'test2', inStock: 'true', petals: '1', scent: 'testScent2'},
+      {name: 'test3', inStock: 'true', petals: '2', scent: 'testScent3'}
+    ];
 
     flowerService.getAllFlowers().subscribe({
       next: (flowers: Flower[]) => {
-        expect(flowers.length).toBe(0);
-        done();
-      }
-    });
-  });
-
-  it('should return only flowers in stock', (done: DoneFn) => {
-    const flowerNames: any = { active1: 'rose', active2: 'lilac', inactive: 'tulip' };
-    (flowerRepository as any).getRawFlowers.and.returnValue(of([
-      { flowerName: flowerNames.active1, isInStock: true, numberOfPetals: 1, flowerScent: 'Sweet' },
-      { flowerName: flowerNames.inactive, isInStock: false, numberOfPetals: 3, flowerScent: 'Aromatic' },
-      { flowerName: flowerNames.active2, isInStock: true, numberOfPetals: 10, flowerScent: 'Bitter' },
-    ]));
-
-    flowerService.getAllFlowers().subscribe({
-      next: (flowers: Flower[]) => {
-        expect(flowers.length).toBe(2);
-
-        const findFlowerInStock = (flowerName: string) => flowers.find(flower => flower.name === flowerName);
-
-        expect(findFlowerInStock(flowerNames.active1)).toBeTruthy();
-        expect(findFlowerInStock(flowerNames.inactive)).toBeUndefined();
-        expect(findFlowerInStock(flowerNames.active2)).toBeTruthy();
-
-        done();
+        expect(flowers).toEqual(testFlowers);
       }
     });
   });
@@ -123,7 +86,8 @@ describe('FlowerService', () => {
   });
 
   it('should save raw flowers to the mock database', () => {
-    const testRawFlowers = [
+    let testRawFlowers: RawFlower[];
+    testRawFlowers = [
       {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
       {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
@@ -140,7 +104,8 @@ describe('FlowerService', () => {
   });
 
   it('should save Flower objects to the mock database as RawFlower objects', () => {
-    const testRawFlowers = [
+    let testRawFlowers: RawFlower[];
+    testRawFlowers = [
       {flowerName: 'test1', isInStock: true, numberOfPetals: 0, flowerScent: 'testScent1'},
       {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}

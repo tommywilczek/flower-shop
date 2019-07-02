@@ -15,9 +15,15 @@ export class FlowerService {
   constructor(private flowerRepository: FlowerRepository) { }
 
   public getAllFlowers(): Observable<Flower[]> {
-    return this.flowerRepository.getRawFlowers().pipe(
-      map(this.toListOfFlowers)
-    );
+    let flowers: Flower[];
+    flowers = [];
+    MOCKRAWFLOWERS.forEach(rawFlower => {
+      flowers.push(this.convertRawFlowerToFlower(rawFlower));
+    });
+    return of(flowers);
+    // return this.flowerRepository.getRawFlowers().pipe(
+    //   map(this.toListOfFlowers)
+    // );
   }
 
   private toListOfFlowers = (flowers: RawFlower[]): Flower[] => {
