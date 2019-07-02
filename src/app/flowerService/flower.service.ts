@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { Flower } from '../../models/flower.model';
 import { FlowerRepository } from '../../repositories/flower.repository';
@@ -12,33 +11,19 @@ import { MOCKRAWFLOWERS } from 'src/repositories/mock-flowers';
 })
 export class FlowerService {
 
-  constructor(private flowerRepository: FlowerRepository) { }
+  public mockRawFlowers: RawFlower[];
+
+  constructor(private flowerRepository: FlowerRepository) {
+    this.mockRawFlowers = MOCKRAWFLOWERS;
+  }
 
   public getAllFlowers(): Observable<Flower[]> {
     let flowers: Flower[];
     flowers = [];
-    MOCKRAWFLOWERS.forEach(rawFlower => {
+    this.mockRawFlowers.forEach(rawFlower => {
       flowers.push(this.convertRawFlowerToFlower(rawFlower));
     });
     return of(flowers);
-    // return this.flowerRepository.getRawFlowers().pipe(
-    //   map(this.toListOfFlowers)
-    // );
-  }
-
-  private toListOfFlowers = (flowers: RawFlower[]): Flower[] => {
-    return flowers
-      .filter(flower => flower.isInStock)
-      .map(this.toFlower);
-  }
-
-  private toFlower = (flower: RawFlower): Flower => {
-    return {
-      name: flower.flowerName,
-      inStock: String(flower.isInStock),
-      petals: String(flower.numberOfPetals),
-      scent: flower.flowerScent
-    };
   }
 
   convertRawFlowerToFlower(rawFlower: RawFlower): Flower {
@@ -69,6 +54,6 @@ export class FlowerService {
   }
 
   saveRawFlower(rawFlower: RawFlower) {
-    MOCKRAWFLOWERS.push(rawFlower);
+    this.mockRawFlowers.push(rawFlower);
   }
 }

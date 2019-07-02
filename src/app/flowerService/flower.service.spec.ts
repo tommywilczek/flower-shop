@@ -57,7 +57,11 @@ describe('FlowerService', () => {
       {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
-    createMockDatabase(testRawFlowers);
+    flowerService.mockRawFlowers = [];
+
+    testRawFlowers.forEach(rawFlower => {
+      flowerService.mockRawFlowers.push(rawFlower);
+    });
 
     let testFlowers: Flower[];
     testFlowers = [
@@ -93,14 +97,20 @@ describe('FlowerService', () => {
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
 
-    createMockDatabase(testRawFlowers);
+    // createMockDatabase(testRawFlowers);
+    flowerService.mockRawFlowers = [];
+
+    testRawFlowers.forEach(rawFlower => {
+      flowerService.mockRawFlowers.push(rawFlower);
+    });
+
 
     const addedTestRawFlower = {flowerName: 'test4', isInStock: true, numberOfPetals: 3, flowerScent: 'testScent4'};
 
     flowerService.saveRawFlower(addedTestRawFlower);
     testRawFlowers.push(addedTestRawFlower);
 
-    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+    expect(flowerService.mockRawFlowers).toEqual(testRawFlowers);
   });
 
   it('should save Flower objects to the mock database as RawFlower objects', () => {
@@ -111,7 +121,12 @@ describe('FlowerService', () => {
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
 
-    createMockDatabase(testRawFlowers);
+    // createMockDatabase(testRawFlowers);
+    flowerService.mockRawFlowers = [];
+
+    testRawFlowers.forEach(rawFlower => {
+      flowerService.mockRawFlowers.push(rawFlower);
+    });
 
     let sampleFlower: Flower;
     sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
@@ -122,7 +137,7 @@ describe('FlowerService', () => {
     flowerService.saveFlowerInService(sampleFlower);
     testRawFlowers.push(sampleRawFlower);
 
-    expect(MOCKRAWFLOWERS).toEqual(testRawFlowers);
+    expect(flowerService.mockRawFlowers).toEqual(testRawFlowers);
   });
 
 
