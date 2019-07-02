@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { FlowerService } from '../flowerService/flower.service';
 import { Flower } from 'src/models/flower.model';
-import { Observable } from 'rxjs';
-import { FlowerRepository } from 'src/repositories/flower.repository';
 
 @Component({
   selector: 'app-show-flowers',
   templateUrl: './show-flowers.component.html',
   styleUrls: ['./show-flowers.component.css'],
-  providers: [FlowerService, FlowerRepository]
+  providers: [FlowerService]
 })
 export class ShowFlowersComponent implements OnInit {
 

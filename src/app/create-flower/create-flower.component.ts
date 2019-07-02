@@ -1,7 +1,6 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { Flower } from '../../models/flower.model';
 import { FlowerService } from '../flowerService/flower.service';
-import { FlowerRepository } from 'src/repositories/flower.repository';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -10,7 +9,6 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrls: ['./create-flower.component.css'],
   providers: [
     FlowerService,
-    FlowerRepository,
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,

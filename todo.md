@@ -1,5 +1,8 @@
 - Overall app
   - "todo list" style app, single page, able to click plus to add, and something else to edit
+  - make every test create a sample flower like this:
+    -     const sampleFlower = new Flower ({ name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' });
+
 
 - flower-repository
   - !!! DID NOT TEST: gets all raw flowers, hung up on the Observables

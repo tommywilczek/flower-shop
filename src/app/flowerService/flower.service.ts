@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { Flower } from '../../models/flower.model';
-import { FlowerRepository } from '../../repositories/flower.repository';
 import { RawFlower } from 'src/models/raw-flower.model';
 import { MOCKRAWFLOWERS } from 'src/repositories/mock-flowers';
 
@@ -13,7 +12,7 @@ export class FlowerService {
 
   public mockRawFlowers: RawFlower[];
 
-  constructor(private flowerRepository: FlowerRepository) {
+  constructor() {
     this.mockRawFlowers = MOCKRAWFLOWERS;
   }
 
