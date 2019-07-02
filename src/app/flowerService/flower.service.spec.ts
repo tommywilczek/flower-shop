@@ -57,11 +57,8 @@ describe('FlowerService', () => {
       {flowerName: 'test2', isInStock: true, numberOfPetals: 1, flowerScent: 'testScent2'},
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
-    flowerService.mockRawFlowers = [];
 
-    testRawFlowers.forEach(rawFlower => {
-      flowerService.mockRawFlowers.push(rawFlower);
-    });
+    flowerService.mockRawFlowers = createMockDatabase(testRawFlowers);
 
     let testFlowers: Flower[];
     testFlowers = [
@@ -97,13 +94,7 @@ describe('FlowerService', () => {
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
 
-    // createMockDatabase(testRawFlowers);
-    flowerService.mockRawFlowers = [];
-
-    testRawFlowers.forEach(rawFlower => {
-      flowerService.mockRawFlowers.push(rawFlower);
-    });
-
+    flowerService.mockRawFlowers = createMockDatabase(testRawFlowers);
 
     const addedTestRawFlower = {flowerName: 'test4', isInStock: true, numberOfPetals: 3, flowerScent: 'testScent4'};
 
@@ -121,12 +112,7 @@ describe('FlowerService', () => {
       {flowerName: 'test3', isInStock: true, numberOfPetals: 2, flowerScent: 'testScent3'}
     ];
 
-    // createMockDatabase(testRawFlowers);
-    flowerService.mockRawFlowers = [];
-
-    testRawFlowers.forEach(rawFlower => {
-      flowerService.mockRawFlowers.push(rawFlower);
-    });
+    flowerService.mockRawFlowers = createMockDatabase(testRawFlowers);
 
     let sampleFlower: Flower;
     sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
@@ -144,11 +130,11 @@ describe('FlowerService', () => {
 });
 
 function createMockDatabase(testRawFlowers) {
-  MOCKRAWFLOWERS.splice(0, MOCKRAWFLOWERS.length);
-
+  let mockRawFlowers: RawFlower[];
+  mockRawFlowers = [];
   testRawFlowers.forEach(rawFlower => {
-    MOCKRAWFLOWERS.push(rawFlower);
+    mockRawFlowers.push(rawFlower);
   });
 
-  return MOCKRAWFLOWERS;
+  return mockRawFlowers;
 }
