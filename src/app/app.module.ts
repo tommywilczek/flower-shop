@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShowFlowersComponent } from './show-flowers/show-flowers.component';
 import { FlowerService } from './flowerService/flower.service';
-import { FlowerRepository } from 'src/repositories/flower.repository';
 import { CreateFlowerComponent } from './create-flower/create-flower.component';
 import { MaterialModule } from 'src/material-module';
 import { FormsModule } from '@angular/forms';
@@ -33,7 +32,6 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     FlowerService,
-    FlowerRepository,
   ],
   bootstrap: [AppComponent]
 })
