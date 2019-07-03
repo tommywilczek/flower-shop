@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core
 
 import { ShowFlowersComponent } from './show-flowers.component';
 import { FlowerService } from './../flowerService/flower.service';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { Flower } from 'src/models/flower.model';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -85,6 +85,14 @@ describe('ShowFlowersComponent', () => {
     expect(displayedFlowersAsHtml[2].textContent)
       .toBe(flowersList[2].name + ': ' + flowersList[2].petals + ' petals, smells ' + flowersList[2].scent);
 
+    });
+
+  it('should display the flowers without list bullet points', () => {
+      const displayedFlowersAsHtml = fixture.nativeElement.querySelectorAll('li');
+
+      displayedFlowersAsHtml.forEach(listElement => {
+        expect(listElement.getAttribute('style')).toBe('list-style:none');
+      });
     });
 
 });
@@ -232,17 +240,23 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     expect(component.saveFlower).toHaveBeenCalledWith(testName);
   });
 
-  it('saveFlowers should pass the component\'s flower object to the flowerService', () => {
+  xit('saveFlowers should pass the component\'s flower object to the flowerService', async(() => {
     let sampleFlower: Flower;
     sampleFlower = { name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' };
 
     component = new ShowFlowersComponent(flowerService);
 
+    const response = new Flower();
+
+    spyOn(flowerService, 'saveFlowerInService').and.returnValue(of(response));
+
     component.flower = sampleFlower;
 
     component.saveFlower();
 
-    expect(flowerService.saveFlowerInService).toHaveBeenCalledWith(sampleFlower);
-  });
+    fixture.detectChanges();
+
+    expect(component.flower).toEqual(response);
+  }));
 
 });

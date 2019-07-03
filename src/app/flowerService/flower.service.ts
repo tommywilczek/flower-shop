@@ -36,9 +36,10 @@ export class FlowerService {
     return flower;
   }
 
-  public saveFlowerInService(flower: Flower) {
+  public saveFlowerInService(flower: Flower): Observable<Flower> {
     const rawFlower = this.convertFlowerToRawFlower(flower);
     this.saveRawFlower(rawFlower);
+    return of(flower);
   }
 
   public convertFlowerToRawFlower(flower: Flower): RawFlower {

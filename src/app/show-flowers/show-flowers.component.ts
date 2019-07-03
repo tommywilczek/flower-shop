@@ -37,8 +37,11 @@ export class ShowFlowersComponent implements OnInit {
   }
 
   saveFlower() {
-    console.log(this.flower.name, this.flower.inStock, this.flower.petals, this.flower.scent);
-    this.flowerService.saveFlowerInService(this.flower);
+    this.flowerService.saveFlowerInService(this.flower)
+      .subscribe(flower => {
+        this.flowers.push(flower);
+        this.getFlowers();
+      });
   }
 
 
