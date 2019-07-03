@@ -188,21 +188,21 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
   });
 
   it('submit button should be Angular Material and show "Submit"', () => {
-    const submitButton = fixture.nativeElement.querySelector('button');
+    const submitButton = fixture.nativeElement.querySelector('#submit-btn');
 
     expect(submitButton.hasAttribute('mat-button')).toBeTruthy();
     expect(submitButton.innerText).toBe('Submit');
   });
 
   it('submit button should clear form and should not refresh the page', () => {
-    const submitButton = fixture.nativeElement.querySelector('button');
+    const submitButton = fixture.nativeElement.querySelector('#submit-btn');
 
     expect(submitButton.getAttribute('type')).toBe('reset');
     expect(submitButton.getAttribute('value')).toBe('Reset');
   });
 
   it('submit button should call the saveFlower() method', () => {
-    const submitButton = fixture.nativeElement.querySelector('button');
+    const submitButton = fixture.nativeElement.querySelector('#submit-btn');
     spyOn(component, 'saveFlower');
 
     submitButton.click();
@@ -268,4 +268,14 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     expect(component.flower).toEqual(response);
   }));
 
+  it('should show an Angular Material button with a Material Icon plus sign', () => {
+    const addButtonId = '#plus-btn ';
+    const matButton = fixture.nativeElement.querySelector(addButtonId);
+
+    expect(matButton.hasAttribute('mat-button'));
+    expect(matButton.firstChild.tagName).toBe('MAT-ICON');
+    expect(matButton.innerText).toBe('add');
+  });
+
+  // for plusBtn: aria-hidden: false, aria-label
 });

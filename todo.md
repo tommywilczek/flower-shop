@@ -1,17 +1,18 @@
 - Overall app
-  - "todo list" style app, single page, able to click plus to add, and something else to edit
   - make every test create a sample flower like this:
-    -     const sampleFlower = new Flower ({ name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' });
+    -     const sampleFlower = new Flower ({ name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' }); 
+    -     instead of 'let' then whatever
+          -     AS IN add that to the constructor?
 
-
-- flower-repository
-  - !!! DID NOT TEST: gets all raw flowers, hung up on the Observables
+- in show-flower
+  - make cards a reasonable width
+  - Make flower name a mat-card-title
 
 - in create-flower.component 
     !!! DID NOT TEST: Can't figure out how to make sure text inputted gets to the ngModel ex)input in the name field should make that word the flower.name
+    - Click a plus sign to add a new flower
     - make input fields stacked on top of each other
         - test drive the css
-    - clear radio button on submit
     - show mat-snackbar when saved
     - inputs should be required (https://stackblitz.com/angular/xaaqjkmnmbqa) using the [hidden]
         - possibly <button type="submit" [disabled]="!form.valid">Save</button>

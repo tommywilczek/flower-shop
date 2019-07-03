@@ -9,6 +9,13 @@
   </li>
 </ul>
 
+<button 
+  mat-button
+  id="plus-btn"
+>
+    <mat-icon>add</mat-icon>
+</button>
+
 <form >
   <mat-form-field>
       <textarea 
@@ -52,6 +59,7 @@
 
   <button 
     mat-button 
+    id="submit-btn"
     type="reset" 
     value="Reset"
     (click)="saveFlower()">

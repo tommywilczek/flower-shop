@@ -26,4 +26,15 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it('should import Google Material Icons theme', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const importLink = fixture.nativeElement.querySelector('link');
+    const googleIconLink = 'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp';
+
+    expect(importLink.getAttribute('href'))
+      .toBe(googleIconLink);
+  });
+
+
+
 });
