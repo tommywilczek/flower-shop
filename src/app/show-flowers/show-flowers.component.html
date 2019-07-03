@@ -2,7 +2,11 @@
   show-flowers works!
 </p>
 <ul *ngFor="let flower of flowers">
-  <li style="list-style:none">{{flower.name}}: {{flower.petals}} petals, smells {{flower.scent}}</li>
+  <li style="list-style:none">
+    <mat-card>
+      {{flower.name}}: {{flower.petals}} petals, smells {{flower.scent}}
+    </mat-card>
+  </li>
 </ul>
 
 <form >

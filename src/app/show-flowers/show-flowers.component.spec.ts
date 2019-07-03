@@ -76,13 +76,13 @@ describe('ShowFlowersComponent', () => {
 
     const displayedFlowersAsHtml = fixture.nativeElement.getElementsByTagName('li');
 
-    expect(displayedFlowersAsHtml[0].textContent)
+    expect(displayedFlowersAsHtml[0].innerText)
       .toBe(flowersList[0].name + ': ' + flowersList[0].petals + ' petals, smells ' + flowersList[0].scent);
 
-    expect(displayedFlowersAsHtml[1].textContent)
+    expect(displayedFlowersAsHtml[1].innerText)
       .toBe(flowersList[1].name + ': ' + flowersList[1].petals + ' petals, smells ' + flowersList[1].scent);
 
-    expect(displayedFlowersAsHtml[2].textContent)
+    expect(displayedFlowersAsHtml[2].innerText)
       .toBe(flowersList[2].name + ': ' + flowersList[2].petals + ' petals, smells ' + flowersList[2].scent);
 
     });
@@ -92,6 +92,15 @@ describe('ShowFlowersComponent', () => {
 
       displayedFlowersAsHtml.forEach(listElement => {
         expect(listElement.getAttribute('style')).toBe('list-style:none');
+      });
+    });
+
+  it('should display the flowers as a list of Angular Material Cards', () => {
+      const displayedFlowersAsHtml = fixture.nativeElement.querySelectorAll('li');
+
+      displayedFlowersAsHtml.forEach(listElement => {
+        expect(listElement.childElementCount).toBe(1);
+        expect(listElement.firstChild.tagName).toBe('MAT-CARD');
       });
     });
 
