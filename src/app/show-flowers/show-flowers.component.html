@@ -33,7 +33,7 @@
         name="name"
         required
       ></textarea>
-  </mat-form-field>
+  </mat-form-field> <br>
   <mat-form-field>
       <textarea 
         matInput 
@@ -42,7 +42,7 @@
         name="petals"
         required
       ></textarea>
-  </mat-form-field>
+  </mat-form-field> <br>
   <mat-form-field>
       <textarea 
         matInput 
@@ -51,10 +51,9 @@
         name="scent"
         required
       ></textarea>
-  </mat-form-field>
+  </mat-form-field> <br>
 
-
-  <label id="in-stock-radio-label">In stock or not in stock?</label>
+  <label id="in-stock-radio-label">In stock or not in stock?</label> <br><br>
   <mat-radio-group 
     aria-labelledby="in-stock-radio-label"
     [(ngModel)]="flower.inStock"
@@ -64,9 +63,10 @@
       <mat-radio-button value="In stock" required>In stock</mat-radio-button>
       <mat-radio-button value="Not in stock" required>Not in stock</mat-radio-button>
   </mat-radio-group>
-
+<br><br>
   <button 
-    mat-button 
+    mat-raised-button 
+    color="primary"
     id="submit-btn"
     type="reset" 
     value="Reset"

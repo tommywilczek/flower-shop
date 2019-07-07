@@ -187,10 +187,11 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     expect(stockRadioLabel.innerText).toBe('In stock or not in stock?');
   });
 
-  it('submit button should be Angular Material and show "Submit"', () => {
+  it('submit button should be Angular Material Raised Button of Primary color and show "Submit"', () => {
     const submitButton = fixture.nativeElement.querySelector('#submit-btn');
 
-    expect(submitButton.hasAttribute('mat-button')).toBeTruthy();
+    expect(submitButton.hasAttribute('mat-raised-button')).toBeTruthy();
+    expect(submitButton.getAttribute('color')).toBe('primary');
     expect(submitButton.innerText.trim()).toBe('Submit');
   });
 
@@ -233,8 +234,6 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
 
     expect(component.flower.name).toBe(testName);
   }));
-
-
 
   xit('submit button should send inputs as a Flower object to saveFlower() method', () => {
     const nameTextArea = fixture.nativeElement.querySelectorAll('[placeholder="Name"]')[0];
