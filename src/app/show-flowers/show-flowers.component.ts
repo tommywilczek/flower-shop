@@ -21,6 +21,7 @@ export class ShowFlowersComponent implements OnInit {
 
   flowers: Flower[];
   flower: Flower;
+  public toggleIsInEditModeCounter = 0;
 
   constructor(private flowerService: FlowerService) {
     this.flower = new Flower();
@@ -28,6 +29,7 @@ export class ShowFlowersComponent implements OnInit {
 
   ngOnInit() {
     this.getFlowers();
+    this.toggleIsInEditModeCounter = 0;
   }
 
   public getFlowers() {
@@ -44,8 +46,17 @@ export class ShowFlowersComponent implements OnInit {
       });
   }
 
-  isInEditMode() {
-    return false;
+  toggleEditMode() {
+    this.toggleIsInEditModeCounter += 1;
   }
+
+  isInEditMode() {
+    if (this.toggleIsInEditModeCounter % 2 === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 
 }

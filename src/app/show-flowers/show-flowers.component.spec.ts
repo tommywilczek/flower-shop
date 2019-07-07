@@ -269,7 +269,7 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
   }));
 
   it('should show an Angular Material button with a Material Icon plus sign', () => {
-    const addButtonId = '#plus-btn ';
+    const addButtonId = '#plus-btn';
     const matButton = fixture.nativeElement.querySelector(addButtonId);
 
     expect(matButton.hasAttribute('mat-button'));
@@ -281,6 +281,17 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     const newFlowerForm = fixture.nativeElement.querySelector('#newFlowerForm');
 
     expect(newFlowerForm.hasAttribute('hidden')).toBe(true);
+  });
+
+  it('should show new flower form at when plus button is pressed', () => {
+    const addBtn = fixture.nativeElement.querySelector('#plus-btn');
+    const newFlowerForm = fixture.nativeElement.querySelector('#newFlowerForm');
+
+    addBtn.click();
+
+    fixture.detectChanges();
+
+    expect(newFlowerForm.hasAttribute('hidden')).toBe(false);
   });
 
 });
