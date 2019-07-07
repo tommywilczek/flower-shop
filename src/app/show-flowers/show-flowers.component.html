@@ -1,6 +1,4 @@
-<p>
-  show-flowers works!
-</p>
+
 <ul title="List of flowers">
   <li 
   *ngFor="let flower of flowers"
@@ -20,7 +18,10 @@
     <mat-icon>add</mat-icon>
 </button>
 
-<form >
+<form 
+  id="newFlowerForm"
+  [hidden]="!isInEditMode()"
+  >
   <mat-form-field>
       <textarea 
         matInput 

@@ -191,7 +191,7 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     const submitButton = fixture.nativeElement.querySelector('#submit-btn');
 
     expect(submitButton.hasAttribute('mat-button')).toBeTruthy();
-    expect(submitButton.innerText).toBe('Submit');
+    expect(submitButton.innerText.trim()).toBe('Submit');
   });
 
   it('submit button should clear form and should not refresh the page', () => {
@@ -277,5 +277,10 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     expect(matButton.innerText).toBe('add');
   });
 
-  // for plusBtn: aria-hidden: false, aria-label
+  it('should hide new flower form at the beginning', () => {
+    const newFlowerForm = fixture.nativeElement.querySelector('#newFlowerForm');
+
+    expect(newFlowerForm.hasAttribute('hidden')).toBe(true);
+  });
+
 });

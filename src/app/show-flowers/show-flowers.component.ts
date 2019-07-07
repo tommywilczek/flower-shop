@@ -44,5 +44,8 @@ export class ShowFlowersComponent implements OnInit {
       });
   }
 
+  isInEditMode() {
+    return false;
+  }
 
 }
