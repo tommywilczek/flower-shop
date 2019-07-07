@@ -308,4 +308,18 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     expect(addBtn).toBeFalsy();
   });
 
+  it('should show plus button after Submit button is clicked', () => {
+    let addBtn = fixture.nativeElement.querySelector('#plus-btn');
+    addBtn.click();
+    fixture.detectChanges();
+
+    const submitButton = fixture.nativeElement.querySelector('#submit-btn');
+    submitButton.click();
+    fixture.detectChanges();
+
+    addBtn = fixture.nativeElement.querySelector('#plus-btn');
+
+    expect(addBtn).toBeTruthy();
+  });
+
 });
