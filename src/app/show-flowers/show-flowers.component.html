@@ -1,8 +1,11 @@
 <p>
   show-flowers works!
 </p>
-<ul *ngFor="let flower of flowers">
-  <li style="list-style:none">
+<ul title="List of flowers">
+  <li 
+  *ngFor="let flower of flowers"
+    style="list-style:none"
+  >
     <mat-card>
       {{flower.name}}: {{flower.petals}} petals, smells {{flower.scent}}
     </mat-card>
@@ -11,6 +14,7 @@
 
 <button 
   mat-button
+  title="Add Flower"
   id="plus-btn"
 >
     <mat-icon>add</mat-icon>

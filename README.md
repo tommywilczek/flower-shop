@@ -27,6 +27,8 @@ This project uses the following practices:
 
 Accessibility tests such as those that test `aria-label` were used in UI components.
 
+Ran [Axe](https://www.deque.com/axe/) tests to automate the testing of most accessibility features
+
 Additionally, manual testing with a screen reader was used.
 
 ## Up and Running

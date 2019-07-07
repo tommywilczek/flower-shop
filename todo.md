@@ -1,6 +1,7 @@
 - Overall app
   - make every test create a sample flower like this:
     -     const sampleFlower = new Flower ({ name: 'Orchid', inStock: 'true', petals: '3', scent: 'Floral' }); 
+    -     Do this by changing the constructor in the models file
     -     instead of 'let' then whatever
           -     AS IN add that to the constructor?
 
