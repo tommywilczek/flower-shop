@@ -15,6 +15,7 @@
   title="Add Flower"
   id="plus-btn"
   (click)="toggleEditMode()"
+  *ngIf="!isInEditMode()"
 >
     <mat-icon>add</mat-icon>
 </button>

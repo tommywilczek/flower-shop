@@ -294,4 +294,18 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     expect(newFlowerForm.hasAttribute('hidden')).toBe(false);
   });
 
+  it('should show plus button at beginning and hide after being clicked', () => {
+    let addBtn = fixture.nativeElement.querySelector('#plus-btn');
+
+    expect(addBtn).toBeTruthy();
+
+    addBtn.click();
+
+    fixture.detectChanges();
+
+    addBtn = fixture.nativeElement.querySelector('#plus-btn');
+
+    expect(addBtn).toBeFalsy();
+  });
+
 });
