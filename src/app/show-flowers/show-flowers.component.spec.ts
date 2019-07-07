@@ -268,13 +268,18 @@ describe('Creating new flowers within ShowFlowersComponent', () => {
     expect(component.flower).toEqual(response);
   }));
 
-  it('should show an Angular Material button with a Material Icon plus sign', () => {
-    const addButtonId = '#plus-btn';
-    const matButton = fixture.nativeElement.querySelector(addButtonId);
+  it('should show an Angular Material Fab Button with a Material Icon plus sign', () => {
+    const matButton = fixture.nativeElement.querySelector('#plus-btn');
 
-    expect(matButton.hasAttribute('mat-button'));
+    expect(matButton.hasAttribute('mat-mini-fab')).toBe(true);
     expect(matButton.firstChild.tagName).toBe('MAT-ICON');
     expect(matButton.innerText).toBe('add');
+  });
+
+  it('should show plus button as Angular Material pimary color', () => {
+    const matButton = fixture.nativeElement.querySelector('#plus-btn');
+
+    expect(matButton.getAttribute('color')).toBe('primary');
   });
 
   it('should hide new flower form at the beginning', () => {
