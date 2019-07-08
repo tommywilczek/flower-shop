@@ -1,19 +1,18 @@
 # FlowerShop
 
-The Flower Shop is a simple Angular web app to practice Test-Driven Development and other best practices used in modern, professional development teams.
+The Flower Shop is a simple Angular web app grown using Test-Driven Development and other best practices used in modern, professional development teams.
 
 ## Best Practices
 
 This project uses the following practices:
 
 - Test and Behavior Driven Development
-  - Using Karma and Jasmine for Angular front-end
-  <!-- - Using Mocha (JavaScript testing framework) and Chai (assertion library) for isolated MongoDB tests -->
-  - Test suite listens to changes in files and runs each time a file is saved
+  - Using Karma and Jasmine for Angular tests
   - Cross-browser testing
     - All tests were run in Chrome, Safari, and Firefox to ensure cross-browser compatibility
-  - Test-driving Styles
-    - I also experimented with TDD and CSS, to emulate codifying business requrements into tests. This allowed me to implement the usage of [Angular Material](https://material.angular.io/)
+  - I test-drove everything. Including CSS
+    - Yes, you read that correctly. Is it the right thing to do? I'm not sure. But I wanted to experiment with taking TDD to the extreme.
+    - This allowed me to implement the usage of [Angular Material](https://material.angular.io/)
 - Continuous integration and Continuous Delivery pipeline
   - Whenever code is pushed to GitHub, TravisCI is configured to run an automated build, lint, and run all tests
   - If the build passes, it is deployed to GitHub Pages
@@ -25,7 +24,7 @@ This project uses the following practices:
 
 ## Accessibility
 
-Accessibility tests such as those that test `aria-label` were used in UI components.
+Accessibility tests such as those that test `aria` attributes were used in UI components.
 
 Ran [Axe](https://www.deque.com/axe/) tests to automate the testing of most accessibility features
 
